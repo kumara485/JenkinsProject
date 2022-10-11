@@ -1,10 +1,27 @@
-pipeline {
-    agent any
-    stages {
-        stage('Welcome Step') {
+pipeline {      # mendatory because its pipeline
+    agent any    # it will run on any node
+    stages {               # this is main step where you group task as stages, there can be muliple stags
+        stage('build') {  # stage and its name
             steps { 
-                echo 'Welcome to Jenkins file'
+                echo 'This is a build step'
+            }
+        }
+         stage('deploy') {  # stage and its name
+            steps { 
+                echo 'This is a deploy step'
+            }
+        }
+         stage('clean') {  # stage and its name
+            steps { 
+                echo 'This is a clean step'
             }
         }
     }
+    
+    post { 
+        always { 
+            echo 'I will run always after '
+        }
+    }
+    
 }
